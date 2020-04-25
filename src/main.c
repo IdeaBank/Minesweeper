@@ -349,7 +349,7 @@ int main()
 		printf("YOU FOUND A MINE! YOU ARE DEAD\n");
 
 	else
-		printf("YOU FOUND NO MINE! YOU ARE NOW FREE TO GO\n");
+		printf("YOU DIDN'T FIND MINE! YOU ARE NOW FREE TO GO\n");
 
 	free(mineArray);
 	free(checkedLocation);
