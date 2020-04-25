@@ -9,7 +9,7 @@ void setPosition(int X, int Y)
 {
 	HANDLE Screen;
 	Screen = GetStdHandle(STD_OUTPUT_HANDLE);
-	COORD Position = { Y, X };
+	COORD Position = { X, Y };
 
 	SetConsoleCursorPosition(Screen, Position);
 }
@@ -283,32 +283,23 @@ int main()
 		switch (pressedKey)
 		{
 		case 'w':
-			if (currentLocation[0] == 0)
-				break;
-
-			else
-				currentLocation[0] -= 1;
-			break;
-
-		case 'a':
 			if (currentLocation[1] == 0)
 				break;
 
 			else
 				currentLocation[1] -= 1;
+			break;
+
+		case 'a':
+			if (currentLocation[0] == 0)
+				break;
+
+			else
+				currentLocation[0] -= 1;
 
 			break;
 
 		case 's':
-			if (currentLocation[0] == size - 1)
-				break;
-
-			else
-				currentLocation[0] += 1;
-
-			break;
-
-		case 'd':
 			if (currentLocation[1] == size - 1)
 				break;
 
@@ -317,11 +308,20 @@ int main()
 
 			break;
 
-		case '\r':	// Enter Key Pressed
-			if (*(checkedLocation + currentLocation[0] * size + currentLocation[1]) == 1)
+		case 'd':
+			if (currentLocation[0] == size - 1)
 				break;
 
-			if (*(mineArray + currentLocation[0] * size + currentLocation[1]) == 1)
+			else
+				currentLocation[0] += 1;
+
+			break;
+
+		case '\r':	// Enter Key Pressed
+			if (*(checkedLocation + currentLocation[1] * size + currentLocation[0]) == 1)
+				break;
+
+			if (*(mineArray + currentLocation[1] * size + currentLocation[0]) == 1)
 			{
 				mineFound += 1;
 				break;
@@ -329,7 +329,7 @@ int main()
 
 			else
 			{
-				*(checkedLocation + currentLocation[0] * size + currentLocation[1]) = 1;
+				*(checkedLocation + currentLocation[1] * size + currentLocation[0]) = 1;
 				checkedCount += 1;
 			}
 
@@ -343,7 +343,7 @@ int main()
 
 	printAll(mineArray, size);
 
-	setPosition(10, 0);
+	setPosition(0, 10);
 
 	if (mineFound != 0)
 		printf("YOU FOUND A MINE! YOU ARE DEAD\n");
