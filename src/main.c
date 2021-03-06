@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <Windows.h>
-#include <memory.h>
+#include <malloc.h>
 #include <stdlib.h>
 #include <time.h>
 #pragma warning(disable:4996)
