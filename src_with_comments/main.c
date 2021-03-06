@@ -6,7 +6,7 @@
 // 화면 초기화 및 커서 위치 조절을 위한 헤더파일
 // Header file for clearing screen and adjusting cursor location
 
-#include <memory.h>
+#include <malloc.h>
 // 메모리 동적 할당을 위한 헤더파일
 // Header file for memory allocation
 
